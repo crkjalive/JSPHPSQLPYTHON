@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Transform origin</title>
+	<style>
+		h1 {
+			text-align: center;
+			background-color: mediumseagreen;
+		}
+
+		.pibote {
+			position: relative;
+			background-color: rgb(57, 167, 231);
+			width: 200px;
+			height: 100px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 3em auto;
+			transform-origin: left top;
+		}
+
+		.pibote:hover {
+			transform: rotate(90deg);
+		}
+
+		.punta {
+			background-color: rgb(206, 226, 19);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>transfor origin pibote del elemento</h1>
+	<div class="pibote">
+		<div class="punta">1</div>
+		transform-origin: right top;
+	</div>
+</body>
+
+</html>

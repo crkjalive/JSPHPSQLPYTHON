@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformaciones CSS</title>
+    <style>
+        a:link{
+            color: rgb(231, 95, 224);
+            font-size: 3em;
+        }
+        a:visited{
+            color: rgb(30, 183, 189);
+        }
+        a:hover{
+            color: rgb(4, 27, 49);
+        }
+        p:not(.maravillas){
+            background-color: rgb(236, 55, 55);
+        }
+        .container div:nth-child(2){
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <a href="#ffff">Alicia</a><br>
+    <a href="#kkkk">Alicia</a><br>
+    <a href="#dddd">Alicia</a><br>
+    <a href="#rrrr">Alicia</a><br>
+    
+    <p>excluyendo clases</p>
+    <p class="maravillas">excluyendo clases con not</p>
+    <p>excluyendo clases</p>
+    <p>excluyendo clases</p>
+    <p class="maravillas">pais de las maravillas</p>
+
+    <div class="container">
+        <div id="ffff" class="">div1</div>
+        <div id="kkkk" class="">div2 nth-child para seleccionar un elemento hijo</div>
+        <div id="dddd" class="">div3</div>
+        <div id="rrrr" class="">div4</div>
+    </div>
+
+</body>
+</html>
