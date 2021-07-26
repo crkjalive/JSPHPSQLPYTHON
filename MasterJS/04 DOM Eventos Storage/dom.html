@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document Object Model</title>
+	<style>
+		body{
+			font-family: "arial";
+		}
+		p{font-size: 1.3rem; margin: 0;padding: 0;background-color: gainsboro; }
+		ul{
+			display: grid;
+			grid-template-columns: 40% repeat(4, 1fr);
+			text-align: center;
+			flex-wrap: wrap;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			justify-content: flex-end;
+		}
+		li{padding: 1em;}
+		li:hover{background-color: dodgerblue;}
+		.logo{
+			background-color: lime;
+			text-align: left;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Manipulación del DOM, BOM</h1>
+
+	<div id="principal__container">Texto interno del contenedor</div>
+	<div class="rojo">seleccinando divs 1</div>
+	<div name="mico" class="azul">seleccinando divs 3</div>
+	<div class="rosa">seleccinando divs 2</div>
+	<div class="azul">seleccinando divs 4</div>
+	<div class="rojo">seleccinando divs 5</div>
+	<div class="verde">seleccinando divs 6</div>
+	<div class="rojo">seleccinando divs 7</div>
+	<div class="rosa">seleccinando divs 8</div>
+
+	<footer class="verde" id="footer"></footer>
+
+	<script src="dom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'arial';
+}
+
+.h1_mimimi{
+	padding: 1em;
+	color: white;
+	background-color: dodgerblue;
+	text-transform: lowercase;
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+.input_mimimi{
+	width: 40%;
+	margin: 6em auto 0;
+	padding: .5em;
+	display: block;
+	font-size: 1.5em;
+	border-radius: .25em;
+	border: none;
+	border: 1px solid dodgerblue;
+}
+.input_mimimi:focus{
+	outline: none;
+}
+.input_mimimi:hover{
+	border-color: greenyellow;
+}
+
+.button_list_mimimi{
+	display: block;
+	margin: 1em auto .5em;
+	width: 30%;
+	padding: 0 .5em;
+	font-size: 1.5em;
+	border: none;
+	color: black;
+	background-color: gold;
+	cursor: pointer;
+	border-radius: .25em;
+}
+.button_list_mimimi:hover{
+	color: green;
+	background-color: greenyellow;
+}
+
+.lista_mimimi{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+.chat_mimimi{
+	font-size: 20px;
+	border-bottom: 1px solid #ccc;
+	padding-top: .5em;
+}
+.chat_mimimi:nth-child(even){
+	text-align: right;
+	color: lightgrey;
+	font-size: 1em;
+	font-style: italic;
+	padding-right: 1em;
+}
+.chat_mimimi:nth-child(odd){
+	padding-left: 1em;
+}
+
+.footer_mimimi{
+	position: fixed;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	width: 100%;
+	background-color: gold;
+	bottom: 0;
+}
+.footer_mimimi > div{
+	margin: 0 auto;
+	padding: 0;
+}
+.footer_mimimi > div:nth-child(1){
+	margin: 0 auto;
+	font-size: 2em;
+}
