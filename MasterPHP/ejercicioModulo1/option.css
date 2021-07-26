@@ -1,0 +1,28 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:'arial';}
+a{text-decoration:none;}
+li{list-style:none;}
+ul{display:flex;}
+
+body{
+  padding:1em;
+}
+.h1{
+  background-color:lime;
+}
+form{
+  width:400px;
+  background-color: #ddd
+}
+select{
+  padding:1em;
+  margin:.5em auto;
+  background-color: dodgerblue;
+  width:100%;
+  border:none;
+}
+option{
+  text-align:right;
+}
+input[type="submit"]{
+  padding:1em;
+}

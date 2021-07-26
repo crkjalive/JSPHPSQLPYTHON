@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Validar formularios</title>
+	<style>
+		*{box-sizing: border-box;margin: 0;padding: 0}
+		form{border:1px solid dodgerblue;width:250px; padding: 1em;margin: 1em auto; }
+		input{width: 100%;margin: 0;padding: .5em}
+		div{width: 100%;margin: .5em 0;}
+		textarea{width: 100%;margin: 0;}
+		input[type=submit]{border:none;border-radius: 5px;padding: 1em;margin: .5em auto 0;}
+	</style>
+</head>
+<body>
+	<form action="guardar.php" method="POST">
+		<div>Titulo</div>
+		<input type="text" name="titulo">
+		<div>Descripcion</div>
+		<textarea name="descripcion"></textarea>
+		<input type="submit" value='enviar'/>
+	</form>
+	
+</body>
+</html>
