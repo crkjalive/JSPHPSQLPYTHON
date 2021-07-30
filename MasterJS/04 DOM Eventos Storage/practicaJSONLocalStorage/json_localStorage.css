@@ -1,0 +1,38 @@
+.css[type="submit"]{background:dodgerblue;color:gold;width:100vh;height:100vw;text-align:right left;font-size:16px;display:block flex grid;position:relative absolute fixed;margin:auto;cursor:pointer;vertical-align: top super bottom sub middle baseline;border-radius:50%;grid-template-columns:repeat(1, 1fr);grid-template-rows: minmax(2em, auto);grid-gap:.5em 1em;grid-column-start:1;grid-column-end:1;grid-row-start:1;grid-row-end:1;align-content:space-evenly;align-self:end;align-items:center;justify-content: space-around space-between;justify-self: stretch;justify-items: start;justify-content:end;justify-self:start;order:1;flex-direction:row-reverse;flex-wrap:wrap row nowrap;align-items:flex-start flex-end;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:'arial';}
+a{text-decoration:none;}
+li{list-style:none;}
+ul{display:flex;}
+
+body{
+  background: dodgerblue;
+}
+
+h1{
+  padding:1em .5em;
+  color:white;
+}
+.formulario{
+  width:50%;
+  padding:1em;
+}
+.formulario input[type="text"]{
+  width:100%;
+  font-size:1.5em;
+}
+label{
+  display:block;
+  margin: .5em 0 0 0;
+  color:white;
+}
+.btn{
+  display:block;
+  padding:1em;
+  margin-top: 1em;
+  width:100%;
+}
+.mostrar{
+  background-color:red;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

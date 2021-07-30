@@ -491,7 +491,7 @@ const pelicula = {
 
 console.log(pelicula.title);
 ~~~
-para acceder a las propiedades solo ahy que llamar el objeto y punto propiedad asi
+para acceder a las propiedades solo hay que llamar el objeto y punto propiedad asi
 
 podemos crear un array de objetos
 ~~~
@@ -556,6 +556,8 @@ for (let index in peliculas) {
 	console.log(peliculas[index]);
 }
 ~~~
+
+#### me falta, como encontrar un object
 
 ___
 

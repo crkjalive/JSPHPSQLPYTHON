@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Consumir datos externos por fetch</title>
-	<style>body{font-family: arial;</style>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Peticiones Fetch con consumo de datos rest</title>
+	<style>
+		body{font-family: arial;}
+		.usuarios{
+			display: grid; 
+			grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr;
+			grid-gap: 1em;
+			align-items: center;
+		}
+		.usuarios img{
+			margin: 0 auto;
+		}
+		.usuarios h4 {
+			padding-left: 1em;
+
+		}
+		.usuarios h3, .usuarios h4{
+			padding: 0;
+			margin: 0;
+		}
+		</style>
 </head>
 <body>
-	<h1>Peticiones Fetch</h1>
+	<h1>Listado de usuarios</h1>
 
-	<script src="fetch.js"></script>
+	<div id="usuarios" class="usuarios">
+		<span class="cargando">Espera cargando la petición...</span>
+	</div>
+	<hr>	
+	<div id="janet" class="janet">
+		<span class="cargando">Espera cargando la petición...</span>
+	</div>
+
+
+
+	<script type="text/javascript"  src="fetch.js"></script>
 </body>
 </html>
