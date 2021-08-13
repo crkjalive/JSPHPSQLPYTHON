@@ -36,7 +36,9 @@ posts = [
 def list_posts(request):
 
 	""" List existings posts """
+	
 	content = []
+	
 	for post in posts:
 		content.append("""
 			<h1>Hola care monda</h1>
