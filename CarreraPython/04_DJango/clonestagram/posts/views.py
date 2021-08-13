@@ -10,14 +10,14 @@ from datetime import datetime
 """json global de posts"""
 posts = [
 	{
-		'name':'Python Django',
+		'name':'Django Development',
 		'user': 'Wizard DJ',
 		'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M:%S hrs'),
 		'picture': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8zxI-vXc42JHCBi9Ny4XK0mDxAp8bNGG2aLdrZqK-fxqaH-UkxRaxpamKFwEbSqIxnko&usqp=CAU'
 
 	},
 	{
-		'name':'Javascript',
+		'name':'Python Development',
 		'user': 'Jared',
 		'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M:%S hrs'),
 		'picture': 'https://pm1.narvii.com/6040/e77a03c4629a9b4ae5daf07c76b2529906db5814_hq.jpg'
