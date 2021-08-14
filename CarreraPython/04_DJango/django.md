@@ -1,3 +1,14 @@
+# django avanzado requiere
+[T] python, terminal, POO, bash scripting, pipes
+[-] modelo cliente servidor, protocolosinternet y http
+[-] fundamentos de ingenieria de software, y desarrollo web
+[-] Django, HtypResponse, HttpRequest, haber concluido 3 o mas proyectos
+[-] class-based views y curso Django, herencias de clases
+[x] Docker, contenedores, imagenes, volumenes, DockerCompose, Curso de Docker
+proyecto Comparte Ride (comparte el uso del carro)
+
+___
+
 # Django 
 - Vamos a crear un platzigram 
 curso del 2018
@@ -319,4 +330,316 @@ def list_posts(request):
 ~~~
 
 ## Introducción al Template System
-video 9
+- el template system de django, es una menera de presentar los datos usando HTML
+- tiene similitud en en la sintaxsys de ninja2  
+
+#### Estructura
+- urls.py (encargada de hacer match con la rutas y las views haciendo la relacion)
+- views.py (encargado de la logica de encontrar los datos y entregalo a las vistas)
+- template (seria la logica de presentar los datos)
+
+### templates de django
+- la configuracion de los templates se encuentra en ***settings.py*** en la parte de TEMPLATES
+- para hacer uso de los templates de django, debemos crear nuestra carpeta de templates en la carpeta de los posts
+- dentro de esta carpeta vamos a contener nuestro html
+- que se renderizaran con el modulo render
+~~~
+from django.shortcuts import render 
+~~~
+- para entregar este archivo .html, debemos en la funcion
+~~~
+return render(request, 'feed.html')
+~~~
+- el render recibe 2 argumentos, el html y un contexto
+- que simplemente son diccionarios {'name':'wizard'}
+~~~
+return render(request, 'feed.html', {'name':'wizard'})
+~~~
+- como mostramos este diccionario
+- con dobles brackets {{}}, en el feed.html que renderizara, la variable name de nuestro diccionario
+~~~
+{{ name }}
+~~~
+
+#### Vamos a insertar datos de nuestro objeto json
+- entregamos datos de nuestro objeto json ***posts***
+~~~
+return render(request, 'feed.html', {'posts': posts})
+~~~
+- nuestro render tiene logica de programación
+- lo cual mostraremos con lenguaje python nuestros datos en el html
+- for in de posts
+~~~
+{% for post in posts %}
+	<p> {{ post.title }} </p>
+{% endfor %}
+~~~
+- se debe abrir y cerrar los for o if, entre brackets y porcentajes
+- manjeamos la iteracion dentro de etiquetas html, y le insertamos la iteracion, y la llave de nuestro objeto
+- aqui se abre la mente y se entiende como trabajamos con los templates systems de Django
+
+#### ahora vamos a htmliar
+- vamos a dar estilos con Bootstrap
+- aprovechando para aprender Bootstrap
+- como es html, creamos una estructura basica de html
+- manejamos stilos de bootstrap, informacion en bootstrap.md, la linkeamos a nuestro feed
+~~~
+<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+~~~
+- Codigo de los post basico hasta el momento con Bootstrap
+~~~
+<div class="container">
+	<div class="row">
+		{% for post in posts %}
+			<div class="col-lg-4 offset-lg-4">
+				<div class="media">
+					<img class="mt-3 rounded-circle" src=" {{ post.user.picture }} " alt=" {{ post.user.name }}">
+					<div class="media-body">
+						<H5 class="mt-0"> {{ post.user.name }} </H5> 
+						{{post.timestamp}}
+					</div>
+				</div>
+				<img class="img-fluid mt-3 border rounded" src="{{ post.photo }}" alt=" {{ post.user.name }} ">
+				<h6 class="ml-1 mt-1"> {{ post.title }} </h6>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+~~~
+- de esta forma es como insertamos python en html, atraves de template system
+- estamos trayendo imagenes random
+
+## Patrones de diseño
+- tenemos codigo mezclado de html, python
+- patrones de diseño: consiste en solucionar estos problemas, separando la logica de la presentacion y del modelo de datos
+
+### MVC (Model, View, Controller)
+separando:
+1. Model 
+	- datos 
+2. View 
+	- presentacion datos al usuario
+3. Controller
+	- logica (valida, controla las rutas, cambia datos)  
+
+este patron de diseño es el implementado en la mayoria de lenguajes
+
+### MTV (Model, Template, Controller)
+Django implementa el MTV
+
+1. Model
+	- Define la estructura de los datos
+	- igual al ***modelo del MVC***
+2. Template
+	- Logica de presentacion de datos
+	- equivalente al ***View*** entrega las vistas al usuario
+3. View
+	- Encargado de traer los datos y pasarlos al template
+	- equivalente al ***controller***, que maneja la logica de las url
+
+## La M en el MTV 
+modelo
+
+formas de conectarnos a una base de datos con Django  
+bases de datos con las que nos podemos conectar  
+compatibilidad con ***postgress***, ***MySQL***, ***Oracle***  
+default ***sqlite3***  
+
+
+Configuracion es ***settings.py*** aqui tenemos toda la configuracion del proyecto  
+***DATABASES*** en esta variable cargamos la configuracion de nuestra base de datos  
+
+***ENGINE***  
+- especifica el motor de la base de datos con la que estamos trabajando  
+1. 'django.db.backends.postgresql'
+2. 'django.db.backends.mysql'
+3. 'django.db.backends.sqltile3'
+4. 'django.db.backends.oracle'
+
+ejemplo en la documentacion de Django
+~~~
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+~~~
+
+#### Migrations
+- debemos migrar las configuraciones para poder trabajar con las bases de datos
+
+> ```python3 manage.py migrate```
+
+- esto instala o compacta todos los paquetes de django desconectados en el proyecto
+
+Aplica  
+Apply all migrations: admin, auth, contenttypes, sessions
+- esta aplicacion creo unas tablas en sqlite3
+- que vamos a inspeccionar con dbBrowser
+- estas tablas son distintas dependiendo de el engine que vallamos a usar
+- esto django las ataca con una tecnica ***ORM*** (Object Relation a Mapper)
+- la tecnica para trabajar con multiples sistemas 
+- que es una abstraccion de POO atraves de clases de Python, para el manejo de  
+los diferentes motores de DB (mysql, postgres, oracle), que nos permiten la interaccion
+- para definir la estructura
+
+#### modelo de usuarios
+- vamos a crear un modelo para el manejo de usuarios
+- atraves de una clase manejamos la creacion una tabla
+- referencia de los field para crera las tablas desde Django
+- https://docs.djangoproject.com/en/3.2/ref/models/fields/
+- todas las opciones para ponerle el tipo de campo en la base de datos
+- osea la codificacion de cada campo
+
+Modelo class User
+~~~
+from django.db import models
+
+# Create your models here.
+
+class User (models.Model):
+	"""Modelo de Usuario"""
+
+	email = models.EmailField(unique=True)
+	password = models.CharField(max_length=100)
+
+	first_name = models.CharField(max_length=100)
+	last_name = models.CharField(max_length=100)
+
+	is_admin = models.BooleanField(default=False)
+
+	bio = models.TextField(blank=True)
+
+	birthdate = models.DateField(blank=True, null=True)
+
+	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now=True)
+~~~
+- de esta forma creamos una tabla
+
+#### Detalle de la clase
+1. unique=True (campo unico)
+2. max_length=100 (varchar 100, maximo de caracteres)
+3. CharField (caracter)
+4. blank=True (pemite esta campo en blanco)
+5. null=True (permite que este nulo este campo)
+6. auto_now_add (estampa la fecha de creacion)
+7. auto_now (estampa la fecha de actualizacion)
+8. BooleanField (va a ser booleano)
+9. default=False (dar valor por defecto)
+
+
+#### debemos migrar la tabla para que reciba los cambios
+***makemigrations***, ***migrate***
+
+- comando para alterar la tabla
+
+> ```python3 manage.py makemigrations```
+
+
+> ```python3 manage.py migrate```
+
+- esto altera la base de datos agregando el modelo User
+- en migrations podemos encontrar el archivo 0001_initial.py
+- con toda la configuracion que hizo
+- actualizamos la migracion, sin errores
+- django ya agrega un id
+
+~~~
+# Generated by Django 3.2.6 on 2021-08-13 18:22
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('email', models.EmailField(max_length=254, unique=True)),
+                ('password', models.CharField(max_length=100)),
+                ('first_name', models.CharField(max_length=100)),
+                ('last_name', models.CharField(max_length=100)),
+                ('bio', models.TextField(blank=True)),
+                ('birthdate', models.DateField(blank=True, null=True)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('modified', models.DateTimeField(auto_now=True)),
+            ],
+        ),
+    ]
+~~~
+
+#### SQLite3
+- instalacion de sqlitebrowser
+
+> ```sudo apt-get install sqlitebrowser```
+
+- vamos a ver con sqlitebrowser, que campos realmente tenemos en sqlite3
+
+|Tabla | posts_user|
+|-|-|-|-|
+| id | integer | NOT NULL | PRIMARY KEY | AUTOINCREMENT |   
+| email | varchar(254) | NOT NULL | UNIQUE |   
+| password | varchar(100) | NOT NULL |  
+| first_name | varchar(100) | NOT NULL |  
+| last_name | varchar(100) | NOT NULL |
+| bio | text | NOT NULL |  
+| birthdate| date |
+| created | datetime | NOT NULL |   
+| modified | datetime | NOT NULL |   
+| is_admin | bool | NOT NULL |   
+
+
+## El ORM de Django
+- como insertar datos
+- hacer consultas
+- hacer filtros
+
+#### vamos abrir el shell de django
+- ya que el shell de python asi lo abramos para trabajar desde consola, no tiene el proyecto cargado
+
+> ```python3 manage.py shell```
+
+- con este comando podemos interactuar con la shell de python y django cargado
+- debemos entender que django esta basado en objetos, 
+- debemos crear objetos instanciando la clase de user
+
+#### interactuemos con el shell
+importamos de posts el models User, para trabajar en el shell
+~~~
+from posts.models import User
+~~~
+- creemos un usuario instanciando la clase User
+~~~
+wizard = User.objects.create(
+...     email='wizard@wizard.com',
+...     password='123456',
+...     first_name='Wizard',
+...     last_name='Deejay'
+... )
+~~~
+- para confirmar los datos, accedemos como se acceden a los objetos normalmente
+
+#### Miremos 
+| nombre | apellido | email | id | is_admin |
+|-|-|-|-|-|
+| wizard.first_name | wizard.last_name | wizard.email | wizard.id |
+|'Wizard' | 'Deejay' | 'wizard@wizard.com' | 1 |
+| jared.first_name | jared.last_name | jared.email | jared.id |
+| 'Jared' | 'KenJar' | 'jared@jared.com' | 2 | True |
+
+
+Min 3.41
