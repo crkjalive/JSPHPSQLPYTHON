@@ -617,12 +617,14 @@ class Migration(migrations.Migration):
 - debemos entender que django esta basado en objetos, 
 - debemos crear objetos instanciando la clase de user
 
-#### interactuemos con el shell
+#### interactuemos con el shell, grabando datos
+
 importamos de posts el models User, para trabajar en el shell
 ~~~
 from posts.models import User
 ~~~
-- creemos un usuario instanciando la clase User
+
+#### creemos un usuario con objects.create,  la clase User (create)
 ~~~
 wizard = User.objects.create(
 ...     email='wizard@wizard.com',
@@ -636,10 +638,40 @@ wizard = User.objects.create(
 #### Miremos 
 | nombre | apellido | email | id | is_admin |
 |-|-|-|-|-|
-| wizard.first_name | wizard.last_name | wizard.email | wizard.id |
-|'Wizard' | 'Deejay' | 'wizard@wizard.com' | 1 |
-| jared.first_name | jared.last_name | jared.email | jared.id |
-| 'Jared' | 'KenJar' | 'jared@jared.com' | 2 | True |
+| wizard.first_name | wizard.last_name | wizard.email | wizard.id ||
+|'Wizard' | 'Deejay' | 'wizard@wizard.com' | 1 ||
+| jared.first_name | jared.last_name | jared.email | jared.id ||
+| 'Jared' | 'KenJar' | 'jared@jared.com' | 2 | True = 1 |
 
 
-Min 3.41
+#### Editando Valores
+chanchito.email = 'lalala@lalala.com'
+#### guardando los cambios en la tabla
+chanchito.save()
+#### revizando datos
+chanchito.created
+chanchito.modified
+
+## creemos un usuario instanciando la clase
+
+teresita = User()  
+teresita.first_name = "Teresita"  
+teresita.last_name = "Ramos"  
+teresita.email = "tere@tere.com"  
+teresita.password = 963.8520  
+teresita.is_admin=True  
+teresita.id  
+
+#### guardar en la base de datos .save()
+teresita.save()  
+
+- mucho mas facil y directo a la propiedad de la clase
+- con .save() se guarda el objeto en la base de datos
+- teresita.id confirmamos que esta greado el objeto User
+
+#### borrar de la base de datos .delete()
+teresita.delete()
+chanchito.delete()
+
+#### agregar desde un script
+10.44
